@@ -325,5 +325,11 @@ if (!file.exists(kbayesiana)) {
   run <- mboContinue(kbayesiana) # retomo en caso que ya exista
 }
 
+current.folder <- "~/"
+new.folder <- "~/buckets/b1/"
+# find the files that you want
+list.of.files <- list.files(current.folder)
+# copy the files to the new folder
+file.copy(list.of.files, new.folder)
 
 cat("\n\nLa optimizacion Bayesiana ha terminado\n")
