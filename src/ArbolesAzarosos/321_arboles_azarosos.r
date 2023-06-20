@@ -19,8 +19,8 @@ PARAM$semilla <- 100316
 # parametros rpart *(obtenidos del gread search con cp> -1)
 PARAM$rpart_param <- list(
   "cp" = -1,
-  "minsplit" = 600,
-  "minbucket" = 100,
+  "minsplit" = 100,
+  "minbucket" = 50,
   "maxdepth" = 6
 )
 
