@@ -17,12 +17,6 @@ require("rpart")
 # minbucket <- c(10, 5, 50, 20, 5, 50, 5, 50, 5, 20, 200)
 # maxdepth <- c(14, 6, 6, 8, 8, 10, 10, 14, 14, 6, 6)
 
-#armo lista de param a aplicar *en este caso (5 combinaciones de param)
-cp <- rep(-1,5)
-minsplit <- c(750, 750, 1000, 1000, 1000)
-minbucket <- c(5, 50, 5, 20, 200)
-maxdepth <- c(10, 14, 14, 6, 6)
-
 
 # Crear la tabla utilizando la función data.frame()
 parametros <- data.frame(cp, minsplit, minbucket, maxdepth)
@@ -84,7 +78,7 @@ set.seed(PARAM$semilla) # Establezco la semilla aleatoria
 
 
 ###ACIORDARME DE BORRAR EL "+6" Y PONERLO DESDE 1""""""""
-for (subexp in 7: PARAM$subexp + 6) {
+for (subexp in 1: PARAM$subexp) {
   
   for (arbolito in 1:PARAM$num_trees_max) {
 
