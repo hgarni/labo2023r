@@ -11,7 +11,7 @@ gc() # Garbage Collection
 require("data.table")
 require("rpart")
 
-#armo lista de param a aplicar *en este caso (11 combinaciones de param)
+#armo lista de param a aplicar en este caso (11 combinaciones de param)
 # cp <- rep(-1,11)
 # minsplit <- c(50, 100, 100, 250, 500, 500, 750, 750, 1000, 1000, 1000)
 # minbucket <- c(10, 5, 50, 20, 5, 50, 5, 50, 5, 20, 200)
@@ -83,8 +83,8 @@ campos_buenos <- copy(setdiff(colnames(dtrain), c("clase_ternaria")))
 set.seed(PARAM$semilla) # Establezco la semilla aleatoria
 
 
-
-for (subexp in 1: PARAM$subexp) {
+###ACIORDARME DE BORRAR EL "+6" Y PONERLO DESDE 1""""""""
+for (subexp in 7: PARAM$subexp + 6) {
   
   for (arbolito in 1:PARAM$num_trees_max) {
 
@@ -105,7 +105,7 @@ for (subexp in 1: PARAM$subexp) {
     modelo <- rpart(formulita,
       data = dtrain,
       xval = 0,
-      control = PARAM$rpart_param$subexp
+      control = list(PARAM$rpart_param[subexp,])
     )
   
     # aplico el modelo a los datos que no tienen clase
@@ -122,7 +122,7 @@ for (subexp in 1: PARAM$subexp) {
       )) # genero la salida
   
       nom_arch <- paste0(
-        "KA2", PARAM$experimento, "_", toString(subexp), "_",
+        "KA", PARAM$experimento, "_", toString(subexp), "_",
         sprintf("%.3d", arbolito), # para que tenga ceros adelante
         ".csv"
       )
@@ -134,4 +134,5 @@ for (subexp in 1: PARAM$subexp) {
       cat("Exp: ", subexp, "\t", "arboles: ",arbolito, "\n" )
     }
   }
+  gc() # BORRO DE MEMORIA LO Q NO SE USA
 }
