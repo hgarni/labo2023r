@@ -16,12 +16,12 @@ PARAM$experimento <- 3210
 # Establezco la semilla aleatoria, cambiar por SU primer semilla
 PARAM$semilla <- 100316
 
-# parametros rpart *(obtenidos del gread search con cp> -1)
+# parametros rpart *(obtenidos del H3210.txt con cp> -1)
 PARAM$rpart_param <- list(
   "cp" = -1,
-  "minsplit" = 100,
-  "minbucket" = 50,
-  "maxdepth" = 6
+  "minsplit" = 2020,
+  "minbucket" = 272,
+  "maxdepth" = 15
 )
 
 # parametros  arbol
@@ -106,7 +106,7 @@ for (arbolito in 1:PARAM$num_trees_max) {
     )) # genero la salida
 
     nom_arch <- paste0(
-      "KA", PARAM$experimento, "_",
+      "KA", PARAM$experimento, "_12_",
       sprintf("%.3d", arbolito), # para que tenga ceros adelante
       ".csv"
     )
