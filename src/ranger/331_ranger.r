@@ -23,10 +23,10 @@ dapply <- dataset[foto_mes == 202109]
 # "mtry" = 30, cantidad de variables que evalua para hacer un split
 #  generalmente sqrt(ncol(dtrain))
 param <- list(
-  "num.trees" = 300, # cantidad de arboles
-  "mtry" = 30,
-  "min.node.size" = 1500, # tamaño minimo de las hojas
-  "max.depth" = 12 # 0 significa profundidad infinita
+  "num.trees" = 206, # cantidad de arboles
+  "mtry" = 4,
+  "min.node.size" = 239, # tamaño minimo de las hojas
+  "max.depth" = 30 # 0 significa profundidad infinita
 )
 
 set.seed(100316) # Establezco la semilla aleatoria
@@ -73,7 +73,7 @@ entrega <- as.data.table(list(
 # HT  representa  Hiperparameter Tuning
 dir.create("./exp/", showWarnings = FALSE)
 dir.create("./exp/KA3310/", showWarnings = FALSE)
-archivo_salida <- "./exp/KA3310/KA3310_001.csv"
+archivo_salida <- "./exp/KA3310/KA3310_007.csv"
 
 # genero el archivo para Kaggle
 fwrite(entrega,
