@@ -22,7 +22,7 @@ require("lightgbm")
 PARAM <- list()
 PARAM$experimento <- "ZZ7710_WF_03"
 #PARAM$exp_input <- "HT7510"
-PARAM$exp_input <- "HT7510_WFV_03"
+PARAM$exp_input <- "HT7510_WF_03"
 
 
 # Que modelos quiero, segun su posicion en el ranking
