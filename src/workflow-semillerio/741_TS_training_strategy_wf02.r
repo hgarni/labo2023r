@@ -14,7 +14,7 @@ PARAM <- list()
 PARAM$experimento <- "TS7410_WF_02"
 
 #PARAM$exp_input <- "FE7310"
-PARAM$exp_input <- "FE6310_WF"
+PARAM$exp_input <- "FE7310_WF"
 
 # me salteo los meses duros de pandemia, pero llego hasta 201907 en training
 # entreno en 18 meses
