@@ -24,7 +24,6 @@ PARAM$experimento <- "ZZ7710_CV"
 #PARAM$exp_input <- "HT7510"
 PARAM$exp_input <- "HT7510_CV"
 
-
 # Que modelos quiero, segun su posicion en el ranking
 # de la Bayesian Optimizacion, ordenado por ganancia descendente
 PARAM$modelos_rank <- c(1)
