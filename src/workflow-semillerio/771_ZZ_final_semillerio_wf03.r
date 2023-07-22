@@ -48,7 +48,6 @@ PARAM$home <- "~/buckets/b1/"
 # FIN Parametros del script
 
 OUTPUT <- list()
-
 #------------------------------------------------------------------------------
 options(error = function() {
   traceback(20)
@@ -145,7 +144,9 @@ ImprimirGraficos <- function(
 #------------------------------------------------------------------------------
 # generacion de archivos para Kaggle, cuando future no tiene clase
 
-GenerarKaggle <- function(tb_prediccion, modelo_rank, iteracion_bayesiana) {
+GenerarKaggle <- function(
+    tb_prediccion, modelo_rank,
+    iteracion_bayesiana, sem) {
   # genero el vector de cortes
   cortes <- seq(
     from = PARAM$kaggle$envios_desde,
@@ -172,7 +173,9 @@ GenerarKaggle <- function(tb_prediccion, modelo_rank, iteracion_bayesiana) {
         sprintf("%03d", iteracion_bayesiana),
         "_",
         sprintf("%05d", corte),
-        substr(campo, 1, 1),
+        substr(campo, 1, 2),
+        "_",
+        sprintf("%03d", sem),
         ".csv"
       )
 
@@ -180,6 +183,27 @@ GenerarKaggle <- function(tb_prediccion, modelo_rank, iteracion_bayesiana) {
         file = nom_submit,
         sep = ","
       )
+
+      if (sem > 1) {
+        nom_old <- paste0(
+          PARAM$experimento,
+          "_",
+          sprintf("%02d", modelo_rank),
+          "_",
+          sprintf("%03d", iteracion_bayesiana),
+          "_",
+          sprintf("%05d", corte),
+          substr(campo, 1, 2),
+          "_",
+          sprintf("%03d", sem - 1), # old
+          ".csv"
+        )
+
+        file.rename(
+          paste0("./", nom_old),
+          paste0("./old/", nom_old)
+        )
+      }
     }
   }
 }
@@ -218,9 +242,7 @@ ksemillas <- sample(primos)[1:PARAM$semillerio]
 
 
 # creo la carpeta donde va el experimento
-dir.create(paste0(PARAM$home, "exp/", PARAM$experimento, "/"),
-  showWarnings = FALSE
-)
+dir.create(paste0(PARAM$home, "exp/", PARAM$experimento, "/"), showWarnings = FALSE)
 # Establezco el Working Directory DEL EXPERIMENTO
 setwd(paste0(PARAM$home, "exp/", PARAM$experimento, "/"))
 
@@ -247,8 +269,12 @@ dfuture <- fread(arch_future)
 
 # logical que me indica si los dtos de future tienen la clase con valores,
 # y NO va para Kaggle
-future_con_clase <-
-  dfuture[clase_ternaria == "" | is.na(clase_ternaria), .N] == 0
+future_con_clase <- dfuture[clase_ternaria == "" | is.na(clase_ternaria), .N] == 0
+
+if (!future_con_clase) {
+  # creo carpeta old, donde voy moviendo el kaggle viejo
+  dir.create(paste0("old/"), showWarnings = FALSE)
+}
 
 # defino la clase binaria
 dataset[, clase01 := ifelse(clase_ternaria %in% c("BAJA+1", "BAJA+2"), 1, 0)]
@@ -370,26 +396,25 @@ for (modelo_rank in PARAM$modelos_rank)
       sep = "\t"
     )
 
-    if (!future_con_clase) GenerarKaggle(tb_prediccion, modelo_rank, iteracion_bayesiana)
+    if (!future_con_clase) {
+      GenerarKaggle(tb_prediccion, modelo_rank, iteracion_bayesiana, sem)
+    }
 
 
     if (future_con_clase) {
       setorder(tb_prediccion, -prob_semilla)
 
-      tb_ganancias[, paste0("g", sem) :=
-        tb_prediccion[
-          1:PARAM$graficar$envios_hasta,
-          cumsum(ifelse(clase_ternaria == "BAJA+2", 117000, -3000))
-        ]]
-
+      tb_ganancias[, paste0("g", sem) := tb_prediccion[
+        1:PARAM$graficar$envios_hasta,
+        cumsum(ifelse(clase_ternaria == "BAJA+2", 117000, -3000))
+      ]]
 
       setorder(tb_prediccion, -prob)
 
-      tb_ganancias[, ganancia_acum :=
-        tb_prediccion[
-          1:PARAM$graficar$envios_hasta,
-          cumsum(ifelse(clase_ternaria == "BAJA+2", 117000, -3000))
-        ]]
+      tb_ganancias[, ganancia_acum := tb_prediccion[
+        1:PARAM$graficar$envios_hasta,
+        cumsum(ifelse(clase_ternaria == "BAJA+2", 117000, -3000))
+      ]]
 
       ImprimirGraficos(tb_ganancias, modelo_rank, iteracion_bayesiana, sem)
     }
@@ -419,4 +444,3 @@ cat(format(Sys.time(), "%Y%m%d %H%M%S"), "\n",
   file = "zRend.txt",
   append = TRUE
 )
-
