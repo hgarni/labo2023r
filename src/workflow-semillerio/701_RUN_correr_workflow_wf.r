@@ -26,3 +26,15 @@ source("~/labo2023r/src/workflow-semillerio/771_ZZ_final_semillerio_wf02.r")
 source("~/labo2023r/src/workflow-semillerio/741_TS_training_strategy_wf03.r")
 source("~/labo2023r/src/workflow-semillerio/751_HT_lightgbm_wf03.r")
 source("~/labo2023r/src/workflow-semillerio/771_ZZ_final_semillerio_wf03.r")
+
+
+# scripts para correr el wf con periodo de training 6 meses (202102, 202101, 202012, 202011, 202010, 202009) 
+source("~/labo2023r/src/workflow-semillerio/741_TS_training_strategy_wf04.r")
+source("~/labo2023r/src/workflow-semillerio/751_HT_lightgbm_wf04.r")
+source("~/labo2023r/src/workflow-semillerio/771_ZZ_final_semillerio_wf04.r")
+
+
+# scripts para correr el wf con periodo de training 6 meses (202101, 202102, 202101, 202012, 202011, 202008) 
+source("~/labo2023r/src/workflow-semillerio/741_TS_training_strategy_wf05.r")
+source("~/labo2023r/src/workflow-semillerio/751_HT_lightgbm_wf05.r")
+source("~/labo2023r/src/workflow-semillerio/771_ZZ_final_semillerio_wf05.r")
