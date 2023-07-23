@@ -24,10 +24,10 @@ require("lightgbm")
 
 # Parametros del script
 PARAM <- list()
-PARAM$experimento <- "HB7810_WF"
+PARAM$experimento <- "HB7810_WF" #mezcla de los scripts de WF
 
 # el inpput deben ser semillerios
-PARAM$exp_input <- c("ZZ7710_WF_01", "ZZ7710_WF_02", "ZZ7710_WF_03")
+PARAM$exp_input <- c("ZZ7710_WF_01", "ZZ7710_WF_02", "ZZ7710_WF_03", "ZZ7710_WF_04", "ZZ7710_WF_05")
 
 PARAM$kaggle$envios_desde <- 9500L
 PARAM$kaggle$envios_hasta <- 13000L
