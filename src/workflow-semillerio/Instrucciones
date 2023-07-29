@@ -1,0 +1,18 @@
+INSTRUCIONES DE USO
+-------------------
+
+Aqui se detalla como se deberan correr los distintos scripts existentes en esta carpeta que se utilizaron 
+para obtener los resultados finales que fueron subidos a la competencia de Kaggle.
+
+1) Generar modelo de 5 Fold Cross Validation con sus respectivas archivos de envio utilizando 18 meses de datos par subir a Kaggle.
+2) Generar archivos de envios del modelo de Walking Forward validation de 5 etapas de 6 meses de training cada una desplazando el tiempo (-1) en cada WF.
+3) Hibridación de los 5 modelos de WF de las 5 etapas generados anteriormente
+4) Hibridación de Walking Forward (5 modelos de WF: WF01, WF02, WF03, WF04, WF05) y Cross Validation
+
+ANALISIS FINAL
+--------------
+
+5) Subir los resultados de los distintos envios de cada modelo hibrido al public de la competencia de Kaggle.
+6) Analizar los resultados. Creación de graficas y Selección del mejor modelo.
+
+
