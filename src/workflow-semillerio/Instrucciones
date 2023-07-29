@@ -8,10 +8,10 @@ de otros archivos que realizan procesos previos.
 
 
 1) Generar modelo de 5 Fold Cross Validation con sus respectivas archivos de envio utilizando 18 meses de datos par subir a Kaggle.
-   Correr el script 701_RUN_correr_workflow_CV.r
+   Ejecutar el script 701_RUN_correr_workflow_CV.r
 
 2) Generar archivos de envios del modelo de Walking Forward validation de 5 etapas de 6 meses de training cada una desplazando el tiempo (-1) en cada WF.
-   701_RUN_correr_workflow_WF.r
+   Ejecutar el script 701_RUN_correr_workflow_WF.r
 
 3) Hibridación de los 5 modelos de WF de las 5 etapas generados anteriormente
    781_ZZ_semillerios_hibridacion_wf
