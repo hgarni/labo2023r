@@ -5,7 +5,7 @@ COMPETENCIA KAGGLE
 ------------------
 
 En la siguiente ruta del repositorio: src/workflow-semillerio/Instrucciones.txt
-se encuentran las instrucciones de ejecución de los scritps utilizados para generar los resultados de la compegtencia de Kaggle 
+se encuentran las instrucciones de ejecución de los scritps utilizados para generar los resultados de la competencia de Kaggle 
 
 
 Ing. Hernán Garnica
