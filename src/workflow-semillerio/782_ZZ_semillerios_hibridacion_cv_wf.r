@@ -24,14 +24,14 @@ require("lightgbm")
 
 # Parametros del script
 PARAM <- list()
-PARAM$experimento <- "HB7810_CV_WF01" #mezcla de los scripts de WF
+PARAM$experimento <- "HB7820_CV_WF" #mezcla de los scripts de WF
 
 # el inpput deben ser semillerios
-PARAM$exp_input <- c("ZZ7710_CV", "ZZ7710_WF_01")
+PARAM$exp_input <- c("ZZ7710_CV", "ZZ7710_WF_01", "ZZ7710_WF_02", "ZZ7710_WF_03", "ZZ7710_WF_04", "ZZ7710_WF_05")
 
-PARAM$kaggle$envios_desde <- 9500L
-PARAM$kaggle$envios_hasta <- 13000L
-PARAM$kaggle$envios_salto <- 500L
+PARAM$kaggle$envios_desde <- 11000L
+PARAM$kaggle$envios_hasta <- 11500L
+PARAM$kaggle$envios_salto <- 100L   #limito cada 100 y acoto los limites de envio
 
 PARAM$graficar$envios_hasta <- 20000L # para el caso que deba graficar
 PARAM$graficar$ventana_suavizado <- 2001L
