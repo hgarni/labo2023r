@@ -3,11 +3,26 @@ INSTRUCIONES DE USO
 
 Aqui se detalla como se deberan correr los distintos scripts existentes en esta carpeta que se utilizaron 
 para obtener los resultados finales que fueron subidos a la competencia de Kaggle.
+Cabe aclarar que hay scripts que requieren de mucho procesamiento de días y días. Además los scripts con "701" tienen dependencias
+de otros archivos que realizan procesos previos. 
+
 
 1) Generar modelo de 5 Fold Cross Validation con sus respectivas archivos de envio utilizando 18 meses de datos par subir a Kaggle.
+   Correr el script 701_RUN_correr_workflow_CV.r
+
 2) Generar archivos de envios del modelo de Walking Forward validation de 5 etapas de 6 meses de training cada una desplazando el tiempo (-1) en cada WF.
+   701_RUN_correr_workflow_WF.r
+
 3) Hibridación de los 5 modelos de WF de las 5 etapas generados anteriormente
+   781_ZZ_semillerios_hibridacion_wf
+
 4) Hibridación de Walking Forward (5 modelos de WF: WF01, WF02, WF03, WF04, WF05) y Cross Validation
+   782_ZZ_semillerios_hibridacion_cv_wf
+   DE AQUI SALE EL MEJOR MODELO!!!!
+
+5) Otras Hibridaciones que no arrojan tan buenos modelos:
+   781_ZZ_semillerios_hibridacion_cv_wf01.r
+   781_ZZ_semillerios_hibridacion_cv_wf04.r
 
 ANALISIS FINAL
 --------------
