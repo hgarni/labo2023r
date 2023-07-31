@@ -7,7 +7,7 @@ options(error = function() {
 })
 
 
-# scripts comunes del workflow para tres prueba walking forward
+# scripts en comune del workflow de todos los periodos de walking forward
 source("~/labo2023r/src/workflow-semillerio/711_CA_reparar_dataset.r")
 source("~/labo2023r/src/workflow-semillerio/721_DR_corregir_drifting.r")
 source("~/labo2023r/src/workflow-semillerio/731_FE_historia_wf.r")

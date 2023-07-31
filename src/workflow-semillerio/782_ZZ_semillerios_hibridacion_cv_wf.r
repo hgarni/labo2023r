@@ -24,7 +24,7 @@ require("lightgbm")
 
 # Parametros del script
 PARAM <- list()
-PARAM$experimento <- "HB7820_CV_WF" #mezcla de los scripts de WF
+PARAM$experimento <- "HB7820_CV_WF" #mezcla de los scripts de WF y CV
 
 # el inpput deben ser semillerios
 PARAM$exp_input <- c("ZZ7710_CV", "ZZ7710_WF_01", "ZZ7710_WF_02", "ZZ7710_WF_03", "ZZ7710_WF_04", "ZZ7710_WF_05")
